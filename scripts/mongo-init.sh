@@ -16,15 +16,15 @@ set -e
 
 mongosh <<EOF
 use admin
-db.auth('$MONGO_INITDB_ROOT_USERNAME', '$MONGO_INITDB_ROOT_PASSWORD')
+db.auth('root', 'openIM123')
 
-db = db.getSiblingDB('$MONGO_INITDB_DATABASE')
+db = db.getSiblingDB('openim_v3')
 db.createUser({
-  user: "$MONGO_OPENIM_USERNAME",
-  pwd: "$MONGO_OPENIM_PASSWORD",
+  user: "root",
+  pwd: "openIM123",
   roles: [
     // Assign appropriate roles here
-    { role: 'readWrite', db: '$MONGO_INITDB_DATABASE' }
+    { role: 'readWrite', db: 'openim_v3' }
   ]
 });
 EOF

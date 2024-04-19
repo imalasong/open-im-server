@@ -3,10 +3,28 @@
 
 #### 部署中间件
   1、修改 docker-compose.yml 文件中的内容,把172.16.1.57替换成你的内网ip
+  <br/>2、修改./scripts/mongo-init.sh文件
+```
+use admin
+db.auth('root', 'openIM123')
+
+db = db.getSiblingDB('openim_v3')
+db.createUser({
+user: "root",
+pwd: "openIM123",
+roles: [
+// Assign appropriate roles here
+{ role: 'readWrite', db: 'openim_v3' }
+]
+});
+ <br/> 3、修改 config/config.yaml 文件,把172.16.1.57替换成你的内网ip
+```
   2、在项目根路径执行以下命令：
 
 ```
 docker compose up -d
+
+db.createUser({ user:'root',pwd:'openIM123',roles:[ { role:'userAdminAnyDatabase', db: 'openim_v3'},"readWriteAnyDatabase"]});
 ```
 
 #### 部署应用程序
