@@ -1,3 +1,0 @@
-prometheus:
-  enable: true
-  ports: [ 20108, 20109, 20110, 20111 ]
