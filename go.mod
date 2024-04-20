@@ -1,6 +1,8 @@
 module github.com/openimsdk/open-im-server/v3
 
-go 1.20
+go 1.21.2
+
+toolchain go1.22.1
 
 require (
 	firebase.google.com/go v3.13.0+incompatible
